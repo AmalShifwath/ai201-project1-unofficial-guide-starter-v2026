@@ -28,10 +28,13 @@
 
      Milestone 5. -->
 
+I chose the campus_life corpa. The campus_life has posts about student life. ~88 documents of 1–3 paragraphs. Useful information usually sits in a single sentence. The topics include administration, course, dining, health, housing, money/job, study groups/library, etc.
+
 ## Chunking Strategy
 
-**Chunk size:**
-**Overlap:**
+**Chunk size: ** the default - 800 characters for now.
+
+**Overlap: ** the default - 120 characters for now.
 
 <!-- What about YOUR documents made you pick these numbers? Short posts and
      long sectioned guides don't want the same chunking, and "800 seemed
@@ -57,6 +60,13 @@
 **Chunk 1** — source: `` — produced by: ``
 
 ```
+======================================================================
+Chunk 1  |  source: admin_add_drop_deadline.txt#0  |  produced by: chunker.py::fallback_split
+======================================================================
+On the add/drop deadline
+
+You can add a course through the end of the second week. Dropping is a longer window — through the end of week six — but a drop after week two shows as a W on your transcript. Nothing anywhere on the registrar's site says this plainly, and students find out from each other.
+
 ```
 
 **Chunk 2** — source: `` — produced by: ``
