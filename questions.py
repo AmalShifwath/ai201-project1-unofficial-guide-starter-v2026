@@ -21,13 +21,41 @@ Swap them for your own if you like. Keep five of them either way: criterion 3
 names a target of "4 of 5", and four of three is not a thing.
 """
 
+'''
+question 1: I need a quite place to focus and study especially during the nights before exams. What are some the available suitable places in the campus? and provide the information.
+Answer in study_library_hours.txt
+Should contain: Library - open until 2am during term, until 10pm during reading week. The third floor is silent and enforced.
+
+question 2: I need to find an on-campus job where there's preferrbaly good pay as well as enough free time for myself to study. What kinds of jobs suit my requirements?
+Answer in money_jobs.txt
+Should contain: all jobs have similar pay, desk jobs have freedom and time while physical/manual jobs like dining doesn't.
+
+question 3: I'm taking CS340 course and worried about the workload and stress. What's the realistic expectation and requirements of study time and workload for this course overall?
+Answer in course_cs_340.txt, course_cs_340_exams.txt, course_cs_340_workload.txt
+Should contain: 6 hrs/week workload in the begninning and about 15hrs/week in the last 3 weeks. The first month is loaded because of getting used to the format. Start the project in week 3 instead of 8.
+
+question 4: What are the operating hours for the health centre?
+Answer in health_center.txt
+Should contain: 8am to 11am walk-in and anytime oustide of those hours is per appointment basis.
+
+question 5: I got my test results for my CS210 class yesterday and I wanna grade appeal. Should I submit my appeal to the department?
+Answer in admin_grade_appeals.txt
+Should contain: 
+'''
+
+
 QUESTIONS = [
     # {"question": "...", "expects": "..."},
-    {"question": "", "expects": ""},
-    {"question": "", "expects": ""},
-    {"question": "", "expects": ""},
-    {"question": "", "expects": ""},
-    {"question": "", "expects": ""},
+    {"question": "I need a quite place to focus and study especially during the nights before exams. What are some the available suitable places in the campus? and provide the information.",
+     "expects": "library, 2 am, 2am, 10pm during reading week, third floor"},
+    {"question": "I need to find an on-campus job where there's preferrbaly good pay as well as enough free time for myself to study. What kinds of jobs suit my requirements?",
+     "expects": "similar pay, same pay, no difference in pay, desk"},
+    {"question": "I'm taking CS340 course and worried about the workload and stress. What's the realistic expectation and requirements of study time and workload for this course overall?",
+     "expects": "6 hours, six hours, 15 hours, fifteen hours, Start the project in week 3, Start the project in week three"},
+    {"question": "What are the operating hours for the health centre?",
+     "expects": "8am to 11am, walk-in, appointment"},
+    {"question": "I got my test results for my CS210 class yesterday and I wanna grade appeal. Should I submit my appeal to the department?",
+     "expects": "instructor, 15 days, fifteen days"},
 ]
 
 # Questions from a different world entirely. Your gate should refuse all five.

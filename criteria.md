@@ -23,6 +23,8 @@ For at least 4 of my 5 test questions, the retrieved chunks include one that
 contains the answer.
 
 **Why this target:**
+The questions I framed asks for a very specific information mostly present in only 1 document in within 1-3 sentences.  
+
 <!-- e.g. "One of my questions is about a topic only two documents mention, so
      I expect that one to be hard." -->
 
@@ -32,7 +34,10 @@ contains the answer.
 
 Every answer the system produces names at least one source document.
 
+
 **Why this target:**
+Because the answers is (and needs to be) verifiable and grounded with evidence since build_prompt() labels all the chunks. Also because every single answer to the questions about campus life asks requires for information that is specific to the campus life topics which are present only in the sources/documents (mostly 1 document or chunk).
+
 <!-- Why all five and not four? What about your setup makes that achievable —
      or what would have to go wrong for it not to be? -->
 
@@ -50,12 +55,15 @@ in at least 4 of 5 tries.
      just keep five of them, or the "4 of 5" above has nothing to be 4 of. -->
 
 **Why this target:**
+This target makes sure that the generated responses are grounded in evidence documents and factual basis, and to avoid LLM's hallucinations and mis-information.
 <!-- What did your distances look like when you set the cutoff in Milestone 4?
      Was there a clean gap, or did the two groups overlap? -->
 
 ---
 
 ## 4. Something about your chunks
+
+Every chunk contains at most 7-8 full sentences and atleast 1 sentence each, and all the sentences in each chunk has specific key information is fully scoped to only one certain topic or subject.
 
 <!-- YOU WRITE THIS ONE.
 
@@ -72,12 +80,14 @@ in at least 4 of 5 tries.
 
 
 **Why this target:**
-
+Because almost all of the documents contain the useful or key information is usually in a single sentence or very few sentences. All the content in a single document pertains to a specific topic of information/adivce, and all of the documents are self-contained.
 
 
 ---
 
 ## 5. Your choice
+
+The correct documents is retrieved even when the query asks for specific information that's rare in the documents corpus and contains the info in paraphrased wording, which makes it harder and more unlikely to match and find. Atleast 2 of 2 rare-topic/paraphrased questions retrieve the correct chunk. (ex: Q4 health center is rare;  second one is Q1)
 
 <!-- YOU WRITE THIS ONE TOO.
 
@@ -90,8 +100,7 @@ in at least 4 of 5 tries.
 
 
 **Why this target:**
-
-
+This tests that all the key information and topics in the corpus is identified and isn't ignored/filtered/missed out even if the key information is only in a small piece of text and is rare compared to other topics of information.
 
 ---
 

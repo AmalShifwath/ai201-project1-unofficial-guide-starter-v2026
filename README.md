@@ -28,13 +28,15 @@
 
      Milestone 5. -->
 
-I chose the campus_life corpa. The campus_life has posts about student life. ~88 documents of 1–3 paragraphs. Useful information usually sits in a single sentence. The topics include administration, course, dining, health, housing, money/job, study groups/library, etc.
+I chose the campus_life corpa. The campus_life has posts about student life. The corpus has 88 documents of 1–3 paragraphs each. Each document/post in campus_life is self-contained, it has all the relevant and related information for each topic (Ex: The health centre's hours and counseling. Or the "Laundry in Old Brewhouse"). The useful or key information is usually found in a single sentence or very few sentences. The topics include administration, advising, course, dining, health, housing, money/job, study groups/library, transit, etc. 
 
 ## Chunking Strategy
 
-**Chunk size: ** the default - 800 characters for now.
+**Chunk size:** 
+Chunk by splitting per sentences, 5-6 sentences maxiumum, 500-600 characters for now.
 
-**Overlap: ** the default - 120 characters for now.
+**Overlap:** 
+1 sentence - 60-65 characters for now.
 
 <!-- What about YOUR documents made you pick these numbers? Short posts and
      long sectioned guides don't want the same chunking, and "800 seemed
@@ -45,6 +47,9 @@ I chose the campus_life corpa. The campus_life has posts about student life. ~88
      more than pretending you got it right first time.
 
      Milestone 3. -->
+
+ The total content in a document often contains only 1-3 setences which captures the whole advice and each sentence usually contains a very-specific, key or useful information about the document's topic. The whole advice/information content in each document is completely dedicated to the same specific topic.
+
 
 ## Sample Chunks
 
@@ -60,12 +65,6 @@ I chose the campus_life corpa. The campus_life has posts about student life. ~88
 **Chunk 1** — source: `` — produced by: ``
 
 ```
-======================================================================
-Chunk 1  |  source: admin_add_drop_deadline.txt#0  |  produced by: chunker.py::fallback_split
-======================================================================
-On the add/drop deadline
-
-You can add a course through the end of the second week. Dropping is a longer window — through the end of week six — but a drop after week two shows as a W on your transcript. Nothing anywhere on the registrar's site says this plainly, and students find out from each other.
 
 ```
 
