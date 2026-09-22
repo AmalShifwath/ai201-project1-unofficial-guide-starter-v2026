@@ -52,7 +52,13 @@ TOP_K = 5               # how many chunks to pull back per question
 # 0.6 is a reasonable starting point, not a right answer. Milestone 4 has you
 # measure your own two groups of distances and put the cutoff in the gap.
 # Most corpora land somewhere between 0.45 and 0.75.
-THRESHOLD = 0.6
+# THRESHOLD = 0.6
+
+# Real, clean gap: in-corpus tops out at 0.592, out-of-scope bottoms out at 0.825.
+# That's a 0.233-wide gap with nothing in it — genuinely clean, no overlap.
+# 0.6 technically works, but it's sitting only 0.008 above your worst in-corpus question.
+# I'd set THRESHOLD = 0.7 it's centered with the actual gap (roughly halfway between 0.592 and 0.825)
+THRESHOLD = 0.7
 
 
 # ─── Models ──────────────────────────────────────────────────────────────────
