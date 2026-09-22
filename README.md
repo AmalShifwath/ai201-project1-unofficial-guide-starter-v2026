@@ -134,9 +134,19 @@ Laundry costs $1.50 wash, $1.25 dry, coin or card. On noise: loud until about 1a
 
 **Question:**
 
+> I got my test results for my CS210 class yesterday and I wanna grade appeal. Should I submit my appeal to the department?
+  (best distance 0.373, cutoff 0.6)
+
 **Answer:**
 
 ```
+
+No, you should not submit your appeal directly to the department. A grade appeal must start with the instructor and be raised within fifteen days of the grade posting; skipping the instructor step will result in the appeal being returned. 
+
+Source: `admin_grade_appeals.txt`
+
+Sources retrieved: admin_grade_appeals.txt, course_cs_210.txt, course_cs_210_exams.txt, course_stat_150.txt, course_stat_150_exams.txt
+
 ```
 
 **My relevance cutoff:**
@@ -152,7 +162,16 @@ Laundry costs $1.50 wash, $1.25 dry, coin or card. On noise: loud until about 1a
 
 | Question | In corpus? | Best distance |
 |---|---|---|
-|  |  |  |
+|  I need a quite place to focus and study especially during the nights before exams. What are some the available suitable places in the campus? and provide the information. | yes | best distance 0.592 |
+| I need to find an on-campus job where there's preferrbaly good pay as well as enough free time for myself to study. What kinds of jobs suit my requirements? | Yes | 0.494 |
+| I'm taking CS340 course and worried about the workload and stress. What's the realistic expectation and requirements of study time and workload for this course overall? | Yes | 0.343 |
+| What are the operating hours for the health centre? | Yes | 0.284 |
+| I got my test results for my CS210 class yesterday and I wanna grade appeal. Should I submit my appeal to the department? | Yes | 0.373 |
+|What is the capital of Mongolia?|No| 0.825 |
+|How do I change the oil in a diesel engine?|No| 0.934 |
+|Who won the 1994 World Cup?|No| 0.886 |
+|What is the recommended dosage of ibuprofen for a headache?|No| 0.844 |
+|How do I write a for loop in Rust?|No| 0.896 |
 
 ## How I Used AI
 
@@ -165,9 +184,28 @@ Laundry costs $1.50 wash, $1.25 dry, coin or card. On noise: loud until about 1a
 
      Milestone 5. -->
 
+
 **1.**
 
+I asked Claude to write the chunking function for split_documents based on
+my strategy (group by paragraph, cap at 5-6 sentences, 1-sentence overlap).
+The first version it gave me only kept a document's title/heading in the
+*first* chunk of a split document so when a document like
+housing_morrow_house.txt split into two chunks, the second chunk started with "The bad: known damp problem on the ground floor..." with no indication of which building it was even about. I caught this by comparing it against another chunking approach I'd written myself, which did repeat the heading on every chunk, and asked Claude to merge that fix into my sentence-based version. Without that, a retrieved chunk from a split document would've been
+unanswerable on its own exactly the "could someone answer a question using
+only this" test the brief asks for.
+
 **2.**
+
+I asked Claude to pressure-test my five acceptance criteria before I
+committed them. It found two real problems I'd missed: criterion 4 said "at
+most 5 full sentences" per chunk, but when it actually counted sentences
+across all 88 of my documents, 25 of them (28%) run 6-7 sentences meaning
+that cap would fail on real data.
+I raised the chunking cap to match. Separately, my criterion 5 talked about "2
+rare-topic/paraphrased questions" without saying which 2 of my 5 test
+questions that meant, which made it untestable as written nobody could
+actually run the check from the sentence alone. I fixed this by giving the concrete example.
 
 <!-- ── Stretch features ─────────────────────────────────────────────────────
      Doing one? Say so here BEFORE you start. A feature this README never
