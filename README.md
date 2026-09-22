@@ -62,7 +62,7 @@ Chunk by splitting per sentences (approx. 5-6 sentences maxiumum, 500-600 charac
 
      Milestone 3. -->
 
-**Chunk 1** — source: `` — produced by: ``
+**Chunk 1** — source: admin_add_drop_deadline.txt#0  `` — produced by: chunker.py::split_documents``
 
 ```
 ======================================================================
@@ -73,7 +73,7 @@ On the add/drop deadline
 You can add a course through the end of the second week. Dropping is a longer window — through the end of week six — but a drop after week two shows as a W on your transcript. Nothing anywhere on the registrar's site says this plainly, and students find out from each other.
 ```
 
-**Chunk 2** — source: `` — produced by: ``
+**Chunk 2** — source: course_biol_160_workload.txt#0  `` — produced by: chunker.py::split_documents``
 
 ```
 ======================================================================
@@ -86,7 +86,7 @@ People keep asking so: 9 to 11 hours a week, the heaviest first-year course by r
 It's front-loaded — the first month is heavier than the rest, partly because you're learning the format.
 ```
 
-**Chunk 3** — source: `` — produced by: ``
+**Chunk 3** — source: course_phys_130.txt#0 `` — produced by: chunker.py::split_documents``
 
 ```
 ======================================================================
@@ -101,7 +101,7 @@ Expect 7 hours a week, plus 3 on lab weeks.
 The one piece of advice: the lab practical is worth 20% and almost nobody prepares for it.
 ```
 
-**Chunk 4** — source: `` — produced by: ``
+**Chunk 4** — source: dining_verrill_street_grill_followup.txt#0 `` — produced by: chunker.py::split_documents``
 
 ```
 ======================================================================
@@ -114,7 +114,7 @@ Adding to what people have said about Verrill Street Grill. The wait figure of u
 Also worth saying: one register, so the queue is a single line no matter how busy. Nobody tells you this at orientation.
 ```
 
-**Chunk 5** — source: `` — produced by: ``
+**Chunk 5** — source: housing_morrow_house.txt#1 `` — produced by: chunker.py::split_documents``
 
 ```
 ======================================================================
