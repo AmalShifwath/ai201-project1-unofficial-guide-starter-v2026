@@ -234,18 +234,117 @@ actually run the check from the sentence alone. I fixed this by giving the concr
 
 | Criterion | Target | Run 1 | Run 2 | Run 3 | Verdict |
 |---|---|---|---|---|---|
-| 1. Retrieved chunk contains the answer | 4 of 5 |  |  |  |  |
-| 2. Every answer names a source | 5 of 5 |  |  |  |  |
-| 3. Gate stops out-of-corpus questions | 4 of 5 |  |  |  |  |
-| 4. | | | | | |
-| 5. | | | | | |
+| 1. Retrieved chunk contains the answer | 4 of 5 | 4/5 | 4/5 | 4/5 | MET |
+| 2. Every answer names a source | 5 of 5 | 5/5 | 5/5 | 5/5 | MET |
+| 3. Gate stops out-of-corpus questions | 4 of 5 | 5/5 | 5/5 | 5/5 | MET |
+| 4. Chunk shape (≤7-8 sentences, one topic) | every chunk | 96/96, 8/8 | same | same | MET |
+| 5. Rare-topic/paraphrased (Q1 + Q4) | 2 of 2 | 2/2 | 2/2 | 2/2 | MET |
 
 <!-- Underneath, paste the REAL output for each criterion from one of your
      runs — the actual text your system produced, not a description of it.
      Name the file and function that produced it. -->
 
-## Verdicts
+Test outputs for each criteria:  
+**Criterion 1** (`store.py::search`) :  study_library_hours.txt chunk retrieved for Q1 contains "2am," "10pm," "third floor" all three facts, confirmed by reading the source document directly.  
 
+**Criterion 2** (`generate.py::answer_from_chunks`): every one of 15 outputs (5 questions × 3 runs) ended with an explicit "Source: ..." line. Example from results/run_2026-09-23_1841_before.md:
+"No, you should not submit your appeal directly to the department... Source: `admin_grade_appeals.txt`"
+  
+
+**Criterion 3** (`gate.py::check`) :  from results/run_2026-09-23_1841_before.md: refused 5 of 5, distances 0.825–0.934, all above the 0.7 cutoff. 
+  iteria 4 - about chunk shape  .
+  
+**Criterion 4: about chunk shapes: ** 
+ 
+  
+ ```  
+python app.py chunks -n 8
+(myenv) PS C:\Users\ashaik  
+\Desktop\codepath\AI201\ai201-project1-unofficial-guide-starter-v2026> python app.py chunks -n 8
+96 chunks total. Showing 8, spread across the corpus.
+
+
+======================================================================
+Chunk 1  |  source: admin_add_drop_deadline.txt#0  |  produced by: chunker.py::split_documents
+======================================================================
+On the add/drop deadline
+
+You can add a course through the end of the second week. Dropping is a longer window — through the end of week six — but a drop after week two shows as a W on your transcript. Nothing anywhere on the registrar's site says this plainly, and students find out from each other.
+
+======================================================================
+Chunk 2  |  source: admin_study_abroad.txt#0  |  produced by: chunker.py::split_documents
+======================================================================
+On the study abroad
+
+Applications open in October for the following academic year. The financial aid package travels with you, which is the single most misunderstood fact about the programme — most students assume it doesn't and rule themselves out.
+
+======================================================================
+Chunk 3  |  source: course_cs_340_exams.txt#0  |  produced by: chunker.py::split_documents
+======================================================================
+CS 340 Databases — assessment
+
+One midterm and a final, both open-book. Lightly curved, usually two or three points.
+
+Start the term project in week three, not week eight; everyone learns this the hard way.
+
+======================================================================
+Chunk 4  |  source: course_math_220_exams.txt#0  |  produced by: chunker.py::split_documents
+======================================================================
+MATH 220 Linear Algebra — assessment
+
+Two midterms and a cumulative final. Curved to a b- median.
+
+The problem sets are the course; the lectures make sense afterwards rather than during.
+
+======================================================================
+Chunk 5  |  source: dining_north_kitchen.txt#0  |  produced by: chunker.py::split_documents
+======================================================================
+North Kitchen
+
+Second-year here. Wait times: none, it seats 60 and is rarely more than half full. The thing worth going for is the rotating regional menu, which changes fortnightly and is ambitious. The thing to know is that closed all summer and during reading week.
+
+Hours are 11:00am to 7:00pm weekdays. Costs one meal swipe, or $13.00 cash.
+
+======================================================================
+Chunk 6  |  source: housing_aldridge_hall.txt#1  |  produced by: chunker.py::split_documents
+======================================================================
+Aldridge Hall — what it's actually like
+
+The bad: the elevator is out roughly one week per semester.
+
+Laundry costs $1.75 wash, $1.50 dry, card only. On noise: quiet floors on 3 and 4 are genuinely enforced.
+
+======================================================================
+Chunk 7  |  source: housing_innisfree_hall.txt#1  |  produced by: chunker.py::split_documents
+======================================================================
+Innisfree Hall — what it's actually like
+
+The bad: no air conditioning, which matters for the first three weeks of September.
+
+Laundry costs $1.75 wash, $1.75 dry, app-based. On noise: moderate; the building is L-shaped and the short wing is much quieter.
+
+======================================================================
+Chunk 8  |  source: housing_tamsin_court.txt#1  |  produced by: chunker.py::split_documents
+======================================================================
+Tamsin Court — what it's actually like
+
+The bad: the most expensive tier by a wide margin, and isolating if you're new.
+
+Laundry costs in-unit washer-dryer. On noise: quiet, structurally — concrete floors between units.
+
+For each one, ask: could someone answer a question using only this,
+without reading what came before or after?  
+```
+  
+
+  
+**Criterion 5** :  Q4 (health_center.txt, only health-tagged doc in the corpus) and Q1 (paraphrased as "quiet place to focus" vs. the document's actual wording "silent... enforced") both retrieved chunks containing the correct answer  
+  
+## Verdicts
+  
+
+
+  
 <!-- MET or MISSED for each of the five, against the target you wrote last
      week — not a new one. Plus a sentence on how you decided. That sentence
      matters most where it was close.
@@ -257,11 +356,11 @@ actually run the check from the sentence alone. I fixed this by giving the concr
 
 | # | Criterion | Verdict | How I decided |
 |---|---|---|---|
-| 1 |  |  |  |
-| 2 |  |  |  |
-| 3 |  |  |  |
-| 4 |  |  |  |
-| 5 |  |  |  |
+| 1 | Retrieved chunk contains the answer | MET | Checked the actual chunk text for all 5 questions against the source documents directly  4 of 5 have a single chunk containing the complete expected answer. Q3 (CS340 workload) is a borderline case: the workload numbers and the "start in week 3" advice landed in two different retrieved chunks rather than one, so no single chunk has the full answer — I'm counting that as not meeting the strict reading of "one chunk contains the answer," which still leaves 4/5. |
+| 2 | Every answer names a source | MET | All 15 outputs (5 questions × 3 runs) named a source explicitly. |
+| 3 | Gate stops out-of-corpus questions | MET | 5 of 5 refused, well clear of the 0.7 cutoff (closest was 0.825). |
+| 4 | Chunk shape | MET | Checked sentence count across all 96 chunks (not just a sample, since the criterion says "every chunk") — max was 6, none exceeded the 7-8 cap. Separately sampled 8 chunks for the "one topic" check by eye — all 8 stayed on one subject, though the North Kitchen chunk (6 sentences covering wait times, menu, hours, and cost) is the densest case and the one I'd watch if I tightened this later. |
+| 5 | Rare-topic/paraphrased | MET | Both named questions (Q4, Q1) retrieved a chunk containing the correct fact. |
 
 ## Diagnoses
 
@@ -286,9 +385,12 @@ actually run the check from the sentence alone. I fixed this by giving the concr
 ## The Improvement
 
 **What I changed:**
+  
 
-**Why I picked it:**
+-  Q3's answer never mentioned "week 3" advice in any of the 3 runs, even though a retrived chunk had it. It didn't break the critrion, but there's a weakness in answers that's  reproducible. 
+- Criterion 4's cap (7-8) is way looser than what my code actually does (max 6). It was never at real risk.  
 
+  
 <!-- Connect it to a specific diagnosis above in one sentence. If you can't,
      you picked a fix because it sounded impressive. -->
 
