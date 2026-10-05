@@ -436,11 +436,14 @@ once, so I can't say which did the work, and Q1's improvement could be noise.
      Milestone 5. -->
 
   
+No criterion was missed, so nothing is broken against my own targets. A few weaknesses that still remain are:  
+(1) I have no scorer, so completeness is judged by reading;  
+(2) answers are longer and sometimes drift off-question; 
+
+(3) criterion 3's five out-of-scope questions are all far from my corpus (best distances 0.825+), so passing them says little about near-miss questions.  
+
 ## What I'd Do Differently
-No criterion was missed, so nothing is broken against my own targets.  
-Remaining answers are longer and sometimes drift off-question; (3) criterion 3's f 
-ive passing them says little about near-miss questions. I 
- stopped here because  <!-- Knowing what you know now — which of your five criteria would you write      differently, and why?     Milestone 5. -->   
+  <!-- Knowing what you know now — which of your five criteria would you write      differently, and why?     Milestone 5. -->   
 
 - Criterion 4: set the cap to 6, my chunker's real limit, so it can fail.
 - Criterion 1: it measures retrieval, but my real problem was generation   expectsfrom  or advices from the sources  
