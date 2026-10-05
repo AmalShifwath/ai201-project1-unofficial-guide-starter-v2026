@@ -382,15 +382,18 @@ without reading what came before or after?
 
      Milestone 3. -->
 
-## The Improvement
+  
+I missed none of my five criteria. But there are two things worth mentioning that cause flaws/faults:
+
+- Criterion 4's cap ("at most 7-8 sentences") is looser than my chunker's limit of 6, so it was never at risk of failing. It doesn't test the criteria..
+- Generation stage: the CS340 answer (Q3) left out the "start the project in week 3" advice in 3 of 3 runs, even though the chunk containing it (course_cs_340_exams.txt) was retrieved every time. Retrieval was identical across runs, so the model had the fact in the sources but didn't mention it. The prompt also tells it to "be brief," which likely competes with combining facts from two chunks.
+# The Improvement
 
 **What I changed:**
   
 
--  Q3's answer never mentioned "week 3" advice in any of the 3 runs, even though a retrived chunk had it. It didn't break the critrion, but there's a weakness in answers that's  reproducible. 
-- Criterion 4's cap (7-8) is way looser than what my code actually does (max 6). It was never at real risk.  
-
-  
+**What I changed:** In generate.py's GROUNDING_INSTRUCTION, I replaced "Be brief" with an instruction to include every relevant fact from all documents that contain part of the answer.  
+**Why I picked it:** It targets the generation-stage diagnosis above (Q3   
 <!-- Connect it to a specific diagnosis above in one sentence. If you can't,
      you picked a fix because it sounded impressive. -->
 
@@ -401,11 +404,12 @@ without reading what came before or after?
 
 | Criterion | Target | Run 1 | Run 2 | Run 3 | Verdict |
 |---|---|---|---|---|---|
-| 1. Retrieved chunk contains the answer | 4 of 5 |  |  |  |  |
-| 2. Every answer names a source | 5 of 5 |  |  |  |  |
-| 3. Gate stops out-of-corpus questions | 4 of 5 |  |  |  |  |
-| 4. | | | | | |
-| 5. | | | | | |
+| 1. Retrieved chunk contains the answer | 4 of 5 | 4/5 | 4/5 | 4/5 | MET |
+| 2. Every answer names a source | 5 of 5 | 5/5 | 5/5 | 5/5 | MET |
+| 3. Gate stops out-of-corpus questions | 4 of 5 | 5/5 | 5/5 | 5/5 | MET |
+| 4. Chunk shape (≤7-8 sentences, one topic) | every chunk | 96/96, 8/8 | same | same | MET |
+| 5. Rare-topic/paraphrased (Q1 + Q4) | 2 of 2 | 2/2 | 2/2 | 2/2 | MET |
+| Extra: Q3 includes the week-3 advice | n/a | 1/1 | 1/1 | 1/1 | MET 0/3 before, 3/3 after |
 
 **Did it help?**
 
@@ -415,7 +419,12 @@ without reading what came before or after?
      tell.
 
      Milestone 4. -->
+  
 
+Yes, for what it targeted. Q3 now includes the advice to start project in 3rd week,,  in 3 of 3 runs (0 of 3 before), and Q1 now includes the 2am hours in 3 of 3 (2 of 3 before). No criterion changed, since none of the five measures generation completeness.  
+  
+Costs: output tokens roughly doubled (930 to 1,939 across the same 15 calls), and a few answers added true but off-question detail (Q1 run 2 added textbook reserve, Q2 run 2 added the work-study aid rule). I changed two prompt lines at
+once, so I can't say which did the work, and Q1's improvement could be noise.  
 ## What's Still Broken
 
 <!-- For each criterion still missed after your fix: what you'd do about it,
@@ -426,9 +435,13 @@ without reading what came before or after?
 
      Milestone 5. -->
 
+  
 ## What I'd Do Differently
+No criterion was missed, so nothing is broken against my own targets.  
+Remaining answers are longer and sometimes drift off-question; (3) criterion 3's f 
+ive passing them says little about near-miss questions. I 
+ stopped here because  <!-- Knowing what you know now — which of your five criteria would you write      differently, and why?     Milestone 5. -->   
 
-<!-- Knowing what you know now — which of your five criteria would you write
-     differently, and why?
-
-     Milestone 5. -->
+- Criterion 4: set the cap to 6, my chunker's real limit, so it can fail.
+- Criterion 1: it measures retrieval, but my real problem was generation   expectsfrom  or advices from the sources  
+- Criterion 3: add near-miss questions, such as campus topics my documents - Criterion 5: "2 of 2" is too small a sample to mean much.
